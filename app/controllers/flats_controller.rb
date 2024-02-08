@@ -34,7 +34,13 @@ class FlatsController < ApplicationController
   end
 
   def destroy
+    @flat.destroy
+    redirect_to flats_path, status: :see_other
+  end
 
+  def query
+    @query = params[:query]
+    @flats = Flat.where("name LIKE ?", "%#{params[:query]}%")
   end
 
 

@@ -7,5 +7,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "flats#index"
-  resources :flats
+  resources :flats do
+    collection do
+      get :query
+    end
+  end
 end
